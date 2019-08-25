@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
+../models/include/Coordinates.hpp
+
 ../models/include/Food.hpp
 SFML/System.hpp
 -
 Map.hpp
 ../models/include/Map.hpp
+Coordinates.hpp
+../models/include/Coordinates.hpp
 
 ../models/include/GameState.hpp
 ./EngineEvent.hpp
@@ -31,6 +35,8 @@ vector
 ../models/include/Map.hpp
 SFML/System.hpp
 -
+Coordinates.hpp
+../models/include/Coordinates.hpp
 vector
 -
 

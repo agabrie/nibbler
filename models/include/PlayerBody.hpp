@@ -15,20 +15,27 @@ enum Direction
 
 class PlayerBody
 {
-	sf::Vector2f _position;
+	// sf::Vector2f _position;
+	sCoordinates _position;
 
 	float _playerSpeed;
 
 public:
 	PlayerBody();
-	PlayerBody(sf::Vector2f start);
+	// PlayerBody(sf::Vector2f start);
+
+	PlayerBody(sCoordinates start);
 	~PlayerBody();
 
 	Direction direction;
 	void updateDirection(Direction newDirection);
-	sf::Vector2f checkPosition(sf::Vector2f position, Direction direction);
+	// sf::Vector2f checkPosition(sf::Vector2f position, Direction direction);
+
+	sCoordinates checkPosition(sCoordinates position, Direction direction);
 	void move(const Map &map);
-	const sf::Vector2f &position() const;
+	// const sf::Vector2f &position() const;
+	sCoordinates &position();
+
 };
 
 #endif

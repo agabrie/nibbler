@@ -10,8 +10,10 @@ class Player{
         ~Player();
         void clearPlayer();
         void extend();
-        bool partAt(sf::Vector2f position);
-        sf::Vector2f checkPosition(sf::Vector2f position, int direction);
+        // bool partAt(sf::Vector2f position);
+        bool partAt(sCoordinates position);
+        // sf::Vector2f checkPosition(sf::Vector2f position, int direction);        
+        sCoordinates checkPosition(sCoordinates position, int direction);
         void moveAll(Map &map);
         void debug();
 };

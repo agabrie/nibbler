@@ -3,6 +3,7 @@
 
 renderer/CMakeFiles/Renderer.dir/src/Renderer.cpp.o
  ../engine/include/./EngineEvent.hpp
+ ../models/include/Coordinates.hpp
  ../models/include/Food.hpp
  ../models/include/GameState.hpp
  ../models/include/Map.hpp
