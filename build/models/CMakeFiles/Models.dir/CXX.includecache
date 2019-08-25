@@ -33,6 +33,8 @@ SFML/System.hpp
 /home/abduraghmaan/Desktop/Nibbler/models/src/Food.cpp
 ../include/Food.hpp
 /home/abduraghmaan/Desktop/Nibbler/models/include/Food.hpp
+iostream
+-
 
 /home/abduraghmaan/Desktop/Nibbler/models/src/Map.cpp
 ../include/Map.hpp

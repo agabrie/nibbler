@@ -9,7 +9,7 @@
 
 class Engine
 {
-	float update_time = 0.1;
+	float update_time = 0.195;
 	// float extend_time = 0.8;
 public:
 	void update(double deltaTime, std::vector<EngineEvent> &actions, GameState &gameState);

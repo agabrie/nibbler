@@ -4,11 +4,15 @@
 #include "PlayerBody.hpp"
 class Player{
     public:
+        int level;
         std::list<PlayerBody *> body;
         Player();
         ~Player();
         void clearPlayer();
         void extend();
+        bool partAt(sf::Vector2f position);
+        sf::Vector2f checkPosition(sf::Vector2f position, int direction);
+        void moveAll(Map &map);
         void debug();
 };
 #endif

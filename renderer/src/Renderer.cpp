@@ -23,7 +23,9 @@ void Renderer::playerBody(sf::RenderWindow &window, const GameState &state,const
 	playerPosition *= SCALE;
 
 	player.setPosition(playerPosition);
-	player.setFillColor(sf::Color(50, 250, 50));
+	// player.setFillColor(sf::Color(50, 250, 50));
+			player.setFillColor(sf::Color(50, 175, 255));
+
 	window.draw(player);
 }
 
@@ -45,7 +47,7 @@ void Renderer::food(sf::RenderWindow &window, const GameState &state)
 	food.setPosition(foodPosition);
 // 	switch(e.type){
 // 		case EnemyType::EBallom:
-// 			enemy.setFillColor(sf::Color(0, 255, 255));
+			// enemy.setFillColor(sf::Color(0, 255, 255));
 // 			break;
 // 		case EnemyType::EAggroBallom:
 			food.setFillColor(sf::Color(255, 102, 178));

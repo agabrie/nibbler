@@ -1,15 +1,9 @@
 #include "../include/Player.hpp"
 #include <iostream>
 Player::Player(){
+    this->level = 1;
     PlayerBody *part = new PlayerBody(sf::Vector2f(1.5,2.5));
-    // PlayerBody *part2 = new PlayerBody(sf::Vector2f(1.5,1.5));
-
-
     this->body.push_back(part);
-    // this->extend();
-    // this->extend();
-    // this->body.push_back(part2);
-
 }
 void Player::clearPlayer(){
     for(auto &e:this->body){
@@ -23,51 +17,61 @@ Player::~Player(){
 void Player::extend(){
     PlayerBody *lastPart;
     sf::Vector2f newPosition;
-    for(auto &e:this->body){
-        // newPosition = e->position();
+    lastPart = this->body.back();
+    newPosition = checkPosition(lastPart->position(), -(lastPart->direction));
+    PlayerBody *newBody = new PlayerBody(newPosition);
+    newBody->updateDirection(lastPart->direction);
+    this->body.push_back(newBody);
+    if(this->level < 19)
+        this->level++;
+}
+void Player::moveAll(Map &map){
+    PlayerBody *first = this->body.front();
+    Direction next = first->direction;
+    int i = -1;
+	for(auto &part:this->body){
+        i++;
+		Direction curr = part->direction;
+        if(!partAt(checkPosition(part->position(),curr)))
+		    part->move(map);
+        else{
+            if(!i){
+                    std::cout<<"Game Over!\n\tHit a Body Part\n";
+                exit(1);
+            }
+        }
+        part->updateDirection(next);
+		next = curr;
+	}
+}
 
-        lastPart = e;
+bool Player::partAt(sf::Vector2f position){
+    for(auto &e:this->body){
+        if(position == e->position())
+            return true;
     }
-    switch(lastPart->direction){
-        case Direction::North:
-            newPosition = sf::Vector2f(0,-1);
-            break;
-        case Direction::South:
-            newPosition = sf::Vector2f(0,+1);
-            break;
-        case Direction::West:
-            newPosition = sf::Vector2f(-1,0);
-            break;
-        case Direction::East:
-            newPosition = sf::Vector2f(+1,0);
-            break;
-        default:
-            break;
-    }
-    newPosition = lastPart->position() - newPosition;
-    std::cout << "Last Node : ("<<lastPart->position().x<<", "<<lastPart->position().y<<") + ";
-    switch (lastPart->direction)
+    return false;
+}
+
+sf::Vector2f Player::checkPosition(sf::Vector2f position, int direction){
+    sf::Vector2f newPosition(0,0);
+    switch (direction)
     {
     case Direction::North:
-        std::cout << "Direction : DOWN  =>\n";    
+        newPosition.y = -1;
         break;
     case Direction::South:
-        std::cout << "Direction : UP  =>\n";    
-        break;
-    case Direction::East:
-        std::cout << "Direction : LEFT  =>\n";    
+        newPosition.y = 1;
         break;
     case Direction::West:
-        std::cout << "Direction : RIGHT  =>\n";    
+        newPosition.x = -1;
         break;
-    default:
+    case Direction::East:
+        newPosition.x = 1;
         break;
+        default:break;
     }
-    std::cout << "Estimated Node : ("<<newPosition.x<<", "<<newPosition.y<<");\n";
-    // std::cout << "Actual";
-    PlayerBody *newBody = new PlayerBody(newPosition);
-    std::cout << "Actual Node : ("<<newBody->position().x<<", "<<newBody->position().y<<");\n";
-    this->body.push_back(newBody);
+    return sf::Vector2f(position+newPosition);
 }
 
 void Player::debug(){
@@ -90,7 +94,6 @@ void Player::debug(){
             default:break;
         }
         std::cout << "Node : ("<<part->position().x<<", "<<part->position().y<<");\n";
-    }
+    }    
     std::cout<<"#################END################\n\n";
-
 }

@@ -7,10 +7,10 @@
 
 enum Direction
 {
-	North,
-	East,
-	South,
-	West
+	North = 1,
+	East = 2,
+	South = -1,
+	West = -2
 };
 
 class PlayerBody
@@ -19,16 +19,15 @@ class PlayerBody
 
 	float _playerSpeed;
 
-	bool correctPlayerCellCollision(sf::Vector2i cell);
-
 public:
 	PlayerBody();
 	PlayerBody(sf::Vector2f start);
 	~PlayerBody();
 
 	Direction direction;
-
-	void move(float deltaTime, const Map &map);
+	void updateDirection(Direction newDirection);
+	sf::Vector2f checkPosition(sf::Vector2f position, Direction direction);
+	void move(const Map &map);
 	const sf::Vector2f &position() const;
 };
 

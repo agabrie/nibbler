@@ -20,7 +20,7 @@ private:
 public:
 	Map();
 	~Map();
-
+	// sf::Vector2i getSize();
 	Tile tileAt(sf::Vector2i pos) const;
 	void setTile(sf::Vector2i pos, Tile tile);
 	const sf::Vector2i &size() const;
