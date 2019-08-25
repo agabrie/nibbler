@@ -1,0 +1,2 @@
+/usr/bin/ar qc libApp.a  CMakeFiles/App.dir/src/AMainLoop.cpp.o CMakeFiles/App.dir/src/Bomberman.cpp.o CMakeFiles/App.dir/src/Input.cpp.o
+/usr/bin/ranlib libApp.a

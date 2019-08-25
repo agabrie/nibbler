@@ -1,0 +1,2 @@
+/usr/bin/ar qc libModels.a  CMakeFiles/Models.dir/src/Map.cpp.o CMakeFiles/Models.dir/src/Player.cpp.o CMakeFiles/Models.dir/src/PlayerBody.cpp.o CMakeFiles/Models.dir/src/Food.cpp.o
+/usr/bin/ranlib libModels.a
