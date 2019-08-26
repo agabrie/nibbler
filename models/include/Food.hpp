@@ -6,11 +6,11 @@
 
 class Food{
     public:
-        sCoordinates position;
-        // sf::Vector2f position;
+        // sCoordinates position;
+        sf::Vector2f position;
         Food();
-        Food(sCoordinates place);
-        // Food(sf::Vector2f place);
+        // Food(sCoordinates place);
+        Food(sf::Vector2f place);
         ~Food();
         void relocate(Map &map);
 };

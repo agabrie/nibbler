@@ -4,8 +4,8 @@
 #include <iostream>
 Player::Player(){
     this->level = 1;
-    // PlayerBody *part = new PlayerBody(sf::Vector2f(1.5,2.5));
-    PlayerBody *part = new PlayerBody(sCoordinates(1.5,2.5));
+    PlayerBody *part = new PlayerBody(sf::Vector2f(1.5,2.5));
+    // PlayerBody *part = new PlayerBody(sCoordinates(1.5,2.5));
     
     this->body.push_back(part);
 }
@@ -20,8 +20,8 @@ Player::~Player(){
 }
 void Player::extend(){
     PlayerBody *lastPart;
-    // sf::Vector2f newPosition;
-    sCoordinates newPosition;
+    sf::Vector2f newPosition;
+    // sCoordinates newPosition;
 
     lastPart = this->body.back();
     newPosition = checkPosition(lastPart->position(), -(lastPart->direction));
@@ -51,8 +51,8 @@ void Player::moveAll(Map &map){
 	}
 }
 
-// bool Player::partAt(sf::Vector2f position){
-bool Player::partAt(sCoordinates position){
+// bool Player::partAt(sCoordinates position){
+bool Player::partAt(sf::Vector2f position){
 
     for(auto &e:this->body){
         if(position == e->position())
@@ -61,10 +61,10 @@ bool Player::partAt(sCoordinates position){
     return false;
 }
 
-// sf::Vector2f Player::checkPosition(sf::Vector2f position, int direction){
-sCoordinates Player::checkPosition(sCoordinates position, int direction){
-    // sf::Vector2f newPosition(0,0);
-    sCoordinates newPosition(0,0);
+// sCoordinates Player::checkPosition(sCoordinates position, int direction){
+sf::Vector2f Player::checkPosition(sf::Vector2f position, int direction){
+    sf::Vector2f newPosition(0,0);
+    // sCoordinates newPosition(0,0);
 
     switch (direction)
     {
@@ -82,8 +82,8 @@ sCoordinates Player::checkPosition(sCoordinates position, int direction){
         break;
         default:break;
     }
-    // return sf::Vector2f(position+newPosition);
-    return sCoordinates(position+newPosition);
+    return sf::Vector2f(position+newPosition);
+    // return sCoordinates(position+newPosition);
 }
 
 void Player::debug(){

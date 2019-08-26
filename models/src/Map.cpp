@@ -4,8 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 
-// const sf::Vector2i DEFAULT_SIZE(21, 21);
-const sCoordinates DEFAULT_SIZE(21, 21);
+const sf::Vector2i DEFAULT_SIZE(21, 21);
+// const sCoordinates DEFAULT_SIZE(21, 21);
 
 const float DESTRUCTABLE_CHANCE = 0.1;
 
@@ -39,22 +39,22 @@ Map::~Map()
 {
 }
 
-// Tile Map::tileAt(sf::Vector2i pos) const
-Tile Map::tileAt(sCoordinates pos) const
+// Tile Map::tileAt(sCoordinates pos) const
+Tile Map::tileAt(sf::Vector2i pos) const
 
 {
 	return this->_tiles[pos.y * this->_size.x + pos.x];
 }
 
-// void Map::setTile(sf::Vector2i pos, Tile tile)
-void Map::setTile(sCoordinates pos, Tile tile)
+// void Map::setTile(sCoordinates pos, Tile tile)
+void Map::setTile(sf::Vector2i pos, Tile tile)
 
 {
 	this->_tiles[pos.y * this->_size.x + pos.x] = tile;
 }
 
-// const sf::Vector2i &Map::size() const
-const sCoordinates &Map::size() const
+// const sCoordinates &Map::size() const
+const sf::Vector2i &Map::size() const
 
 {
 	return this->_size;
