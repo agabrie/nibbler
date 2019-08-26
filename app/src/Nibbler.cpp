@@ -1,5 +1,5 @@
 
-#include "./Bomberman.hpp"
+#include "./Nibbler.hpp"
 
 #include <stdexcept>
 #include <iostream>
@@ -7,7 +7,7 @@
 const int MAP_WIDTH = 11;
 const int MAP_HEIGHT = 11;
 
-Bomberman::Bomberman()
+Nibbler::Nibbler()
 	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE),
 	  renderTime(0),
 	  engineTime(0)
@@ -16,16 +16,16 @@ Bomberman::Bomberman()
 	this->frameClock.restart();
 }
 
-Bomberman::~Bomberman()
+Nibbler::~Nibbler()
 {
 }
 
-void Bomberman::startGame()
+void Nibbler::startGame()
 {
 	this->start();
 };
 
-void Bomberman::updateFunc()
+void Nibbler::updateFunc()
 {
 	if (!this->window.isOpen())
 		this->stop();

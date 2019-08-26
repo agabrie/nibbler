@@ -1,6 +1,6 @@
 add_library(App STATIC
     src/AMainLoop.cpp
-    src/Bomberman.cpp
+    src/Nibbler.cpp
     src/Input.cpp
 )
 
@@ -13,5 +13,5 @@ target_link_libraries(App
     Models
 )
 
-add_executable(bomberman src/main.cpp)
-target_link_libraries(bomberman App)
+add_executable(nibbler src/main.cpp)
+target_link_libraries(nibbler App)

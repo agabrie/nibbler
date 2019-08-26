@@ -40,7 +40,7 @@ void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameSta
 		if(this->update_time <= 0.0){
 			// float diff = (1/(gameState.player.level * 10);
 			this->update_time = UPDATE_TIME - (gameState.player.level / 200.0);
-			std::cout<< this->update_time << "\n";
+			// std::cout<< this->update_time << "\n";
 			gameState.player.moveAll(gameState.map);
 			if(first->position() == gameState.food.position){
 				gameState.food.relocate(gameState.map);

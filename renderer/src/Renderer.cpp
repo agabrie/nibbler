@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-const float SCALE = 30;
+const float SCALE = 60;
 
 void Renderer::render(sf::RenderWindow &window, const GameState &state)
 {

@@ -1,9 +1,9 @@
 
-#include "./Bomberman.hpp"
+#include "./Nibbler.hpp"
 
 int main()
 {
-	Bomberman bomberman;
+	Nibbler nibbler;
 
-	bomberman.startGame();
+	nibbler.startGame();
 }

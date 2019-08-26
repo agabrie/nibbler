@@ -1,5 +1,5 @@
-#ifndef _Bomberman_hpp_
-#define _Bomberman_hpp_
+#ifndef _Nibbler_hpp_
+#define _Nibbler_hpp_
 
 #include "./AMainLoop.hpp"
 #include "./Input.hpp"
@@ -13,11 +13,11 @@
 #include <vector>
 #include <ctime>
 
-static const uint WINDOW_WIDTH = 800;
-static const uint WINDOW_HEIGHT = 800;
-static const char *WINDOW_TITLE = "Bomberman";
+static const uint WINDOW_WIDTH = 21*60;
+static const uint WINDOW_HEIGHT = 21*60;
+static const char *WINDOW_TITLE = "Nibbler";
 
-class Bomberman : private AMainLoop
+class Nibbler : private AMainLoop
 {
 private:
 	sf::RenderWindow window;
@@ -35,8 +35,8 @@ private:
 	virtual void updateFunc();
 
 public:
-	Bomberman();
-	~Bomberman();
+	Nibbler();
+	~Nibbler();
 
 	void startGame();
 };

@@ -4,5 +4,4 @@ add_library(Models STATIC
     src/Player.cpp
     src/PlayerBody.cpp
     src/Food.cpp
-
 )
