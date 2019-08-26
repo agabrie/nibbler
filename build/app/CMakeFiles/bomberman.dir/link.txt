@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/bomberman.dir/src/main.cpp.o  -o bomberman libApp.a -lsfml-graphics -lsfml-window -lsfml-system ../engine/libEngine.a ../renderer/libRenderer.a ../models/libModels.a 
