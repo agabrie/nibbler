@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 const float UPDATE_TIME = 0.2;
+static Direction last_dir = Direction::North;
 // const float EXTEND_TIME = 0.16;
 
 void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameState &gameState)
@@ -18,19 +19,19 @@ void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameSta
 				switch (event)
 				{
 				case EngineEvent::move_up:
-					if(direction!=Direction::South)
+					if(last_dir!=Direction::South)
 						direction = Direction::North;
 					break;
 				case EngineEvent::move_right:
-					if(direction!=Direction::West)
+					if(last_dir!=Direction::West)
 						direction = Direction::East;
 					break;
 				case EngineEvent::move_down:
-					if(direction!=Direction::North)
+					if(last_dir!=Direction::North)
 						direction = Direction::South;	
 					break;
 				case EngineEvent::move_left:
-					if(direction!=Direction::East)
+					if(last_dir!=Direction::East)
 						direction = Direction::West;
 					break;
 				default:
@@ -40,6 +41,7 @@ void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameSta
 		if(this->update_time <= 0.0){
 			// float diff = (1/(gameState.player.level * 10);
 			this->update_time = UPDATE_TIME - (gameState.player.level / 200.0);
+			last_dir = first->direction;
 			// std::cout<< this->update_time << "\n";
 			gameState.player.moveAll(gameState.map);
 			if(first->position() == gameState.food.position){
