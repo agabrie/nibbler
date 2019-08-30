@@ -8,10 +8,10 @@ class Food{
     public:
         // sCoordinates position;
         sf::Vector2f position;
-        Food();
+        Food(Map &map);
         // Food(sCoordinates place);
         Food(sf::Vector2f place);
         ~Food();
-        void relocate(Map &map);
+        void relocate(int width, int height);
 };
 #endif

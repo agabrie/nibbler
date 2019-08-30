@@ -17,6 +17,7 @@ void Renderer::playerBody(sf::RenderWindow &window, const GameState &state,const
 {
 	// sf::CircleShape player(SCALE / 2);
 	sf::RectangleShape player(sf::Vector2f(SCALE,SCALE));
+	// sf::CircleShape player(SCALE / 2);
 	sf::Vector2f playerPosition(pb.position());
 	playerPosition -= sf::Vector2f(0.5, 0.5);
 	// playerPosition.y *= -1;
@@ -40,7 +41,7 @@ void Renderer::food(sf::RenderWindow &window, const GameState &state)
 {
 	sf::CircleShape food(SCALE / 2);
 
-	sf::Vector2f foodPosition(state.food.position);
+	sf::Vector2f foodPosition(state.food->position);
 	foodPosition -= sf::Vector2f(0.5, 0.5);
 	foodPosition *= SCALE;
 

@@ -7,7 +7,7 @@ const float UPDATE_TIME = 0.2;
 static Direction last_dir = Direction::North;
 // const float EXTEND_TIME = 0.16;
 
-void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameState &gameState)
+void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameState gameState)
 {
 	this->update_time -= deltaTime;
 	int i = 0;
@@ -44,8 +44,8 @@ void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameSta
 			last_dir = first->direction;
 			// std::cout<< this->update_time << "\n";
 			gameState.player->moveAll(*gameState.map);
-			if(first->position() == gameState.food.position){
-				gameState.food.relocate(*gameState.map);
+			if(first->position() == gameState.food->position){
+				gameState.food->relocate(gameState.map->size().x,gameState.map->size().y);
 				gameState.player->extend();
 			}
 			

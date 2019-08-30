@@ -7,16 +7,24 @@
 const int MAP_WIDTH = 11;
 const int MAP_HEIGHT = 11;
 
-Nibbler::Nibbler(int width, int height)
-	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE),
+Nibbler::Nibbler(int width, int height,int level)
+	: window(sf::VideoMode(width*60, height*60), WINDOW_TITLE),
 	  renderTime(0),
-	  engineTime(0),
-	  gameState(new GameState(width, height))
+	  engineTime(0)
 {
+	gameState = (new GameState(width, height,level));
 	this->deltaClock.restart();
 	this->frameClock.restart();
 }
-
+Nibbler::Nibbler(int width, int height)
+	: window(sf::VideoMode(width*60, height*60), WINDOW_TITLE),
+	  renderTime(0),
+	  engineTime(0)
+{
+	gameState = (new GameState(width, height));
+	this->deltaClock.restart();
+	this->frameClock.restart();
+}
 Nibbler::~Nibbler()
 {
 }
@@ -39,9 +47,9 @@ void Nibbler::updateFunc()
 	this->renderTime = this->deltaClock.getElapsedTime().asSeconds();
 	// this->renderTime = 60;
 	this->deltaClock.restart();
-
-	this->engine.update(this->renderTime + this->engineTime, actions, this->gameState);
-
+	// std::cout << "Here 1\n";
+	this->engine.update(this->renderTime + this->engineTime, actions, *this->gameState);
+	// std::cout << "Here 1\n";
 	// Record the time taken by the engine
 	this->engineTime = this->deltaClock.getElapsedTime().asSeconds();
 	// this->engineTime = 1000;
@@ -50,7 +58,7 @@ void Nibbler::updateFunc()
 	// Only render if required to enforce frameRate
 	if (this->frameClock.getElapsedTime().asSeconds() >= this->perFrameSeconds)
 	{
-		this->renderer.render(this->window, this->gameState);
+		this->renderer.render(this->window, *this->gameState);
 		this->frameClock.restart();
 	}
 }

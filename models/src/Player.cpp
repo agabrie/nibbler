@@ -2,12 +2,15 @@
 #include "../include/Coordinates.hpp"
 
 #include <iostream>
-Player::Player(int level){
+Player::Player(int width,int height,int level){
+    // if(level > 23)
+        // level = 1;
     this->level = level;
-    PlayerBody *part = new PlayerBody(sf::Vector2f(1.5,2.5));
+    PlayerBody *part = new PlayerBody(sf::Vector2f((width/2)+0.5,(height/2)+0.5));
     // PlayerBody *part = new PlayerBody(sCoordinates(1.5,2.5));
-    for(int i = 1; i <= level; i++)
         this->body.push_back(part);
+    for(int i = 1; i < level; i++)
+        this->extend();
 }
 void Player::clearPlayer(){
     for(auto &e:this->body){
@@ -28,7 +31,7 @@ void Player::extend(){
     PlayerBody *newBody = new PlayerBody(newPosition);
     newBody->updateDirection(lastPart->direction);
     this->body.push_back(newBody);
-    if(this->level < 19)
+    if(this->level < 29)
         this->level++;
 }
 void Player::moveAll(Map &map){

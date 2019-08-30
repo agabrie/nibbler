@@ -6,7 +6,7 @@ class Player{
     public:
         int level;
         std::list<PlayerBody *> body;
-        Player(int level);
+        Player(int width, int height,int level);
         ~Player();
         void clearPlayer();
         void extend();

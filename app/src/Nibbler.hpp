@@ -25,7 +25,7 @@ private:
 	Renderer renderer;
 	Input input;
 
-	GameState gameState;
+	GameState *gameState;
 
 	sf::Clock deltaClock;
 	sf::Clock frameClock;
@@ -37,6 +37,7 @@ private:
 
 public:
 	Nibbler(int width,int height);
+	Nibbler(int width,int height,int level);
 	~Nibbler();
 
 	void startGame();
