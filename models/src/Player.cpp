@@ -2,12 +2,12 @@
 #include "../include/Coordinates.hpp"
 
 #include <iostream>
-Player::Player(){
-    this->level = 1;
+Player::Player(int level){
+    this->level = level;
     PlayerBody *part = new PlayerBody(sf::Vector2f(1.5,2.5));
     // PlayerBody *part = new PlayerBody(sCoordinates(1.5,2.5));
-    
-    this->body.push_back(part);
+    for(int i = 1; i <= level; i++)
+        this->body.push_back(part);
 }
 void Player::clearPlayer(){
     for(auto &e:this->body){

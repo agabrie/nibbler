@@ -31,11 +31,12 @@ private:
 	sf::Clock frameClock;
 	float renderTime;
 	float engineTime;
-
+	int mapWidth;
+	int mapHeight;
 	virtual void updateFunc();
 
 public:
-	Nibbler();
+	Nibbler(int width,int height);
 	~Nibbler();
 
 	void startGame();

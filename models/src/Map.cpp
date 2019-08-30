@@ -9,10 +9,12 @@ const sf::Vector2i DEFAULT_SIZE(21, 21);
 
 const float DESTRUCTABLE_CHANCE = 0.1;
 
-Map::Map()
-	: _size(DEFAULT_SIZE),
+Map::Map(int width, int height)
+	: 
 	  _tiles(this->_size.x * this->_size.y, Tile::Clear)
 {
+	_size.x = width;
+	_size.y = height;
 	std::srand(time(NULL));
 
 	for (int y = 0; y < _size.y; y++)

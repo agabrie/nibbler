@@ -15,9 +15,13 @@
 class GameState
 {
 public:
-	Player player;
+	Player *player;
 	Food food;
-	Map map;
+	Map *map;
+	GameState(int width, int height, int level){
+		player = new Player(level);
+		map = new Map(width, height);
+	}
 };
 
 #endif

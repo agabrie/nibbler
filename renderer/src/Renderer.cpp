@@ -31,7 +31,7 @@ void Renderer::playerBody(sf::RenderWindow &window, const GameState &state,const
 
 void Renderer::player(sf::RenderWindow &window, const GameState &state)
 {
-	for(auto &part: state.player.body){
+	for(auto &part: state.player->body){
 		playerBody(window, state,*part);
 	}
 }
@@ -61,7 +61,7 @@ void Renderer::food(sf::RenderWindow &window, const GameState &state)
 
 void Renderer::map(sf::RenderWindow &window, const GameState &state)
 {
-	const Map &map = state.map;
+	const Map &map = *state.map;
 	const sf::Vector2i &mapSize = map.size();
 	Tile tile;
 	sf::RectangleShape cell(sf::Vector2f(SCALE, SCALE));

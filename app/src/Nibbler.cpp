@@ -7,10 +7,11 @@
 const int MAP_WIDTH = 11;
 const int MAP_HEIGHT = 11;
 
-Nibbler::Nibbler()
+Nibbler::Nibbler(int width, int height)
 	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE),
 	  renderTime(0),
-	  engineTime(0)
+	  engineTime(0),
+	  gameState(new GameState(width, height))
 {
 	this->deltaClock.restart();
 	this->frameClock.restart();

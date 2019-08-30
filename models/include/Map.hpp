@@ -19,7 +19,7 @@ private:
 	std::vector<Tile> _tiles;
 
 public:
-	Map();
+	Map(int width,int height);
 	~Map();
 	// sf::Vector2i getSize();
 	Tile tileAt(sf::Vector2i pos) const;
