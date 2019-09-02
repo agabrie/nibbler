@@ -8,19 +8,22 @@ const int MAP_WIDTH = 11;
 const int MAP_HEIGHT = 11;
 
 Nibbler::Nibbler(int width, int height,int level)
-	: window(sf::VideoMode(width*60, height*60), WINDOW_TITLE),
+	: window(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), WINDOW_TITLE),
 	  renderTime(0),
 	  engineTime(0)
 {
+	renderer = new Renderer(width, height);
 	gameState = (new GameState(width, height,level));
 	this->deltaClock.restart();
 	this->frameClock.restart();
 }
+
 Nibbler::Nibbler(int width, int height)
-	: window(sf::VideoMode(width*60, height*60), WINDOW_TITLE),
+	: window(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), WINDOW_TITLE),
 	  renderTime(0),
 	  engineTime(0)
 {
+	renderer = new Renderer(width, height);
 	gameState = (new GameState(width, height));
 	this->deltaClock.restart();
 	this->frameClock.restart();
@@ -58,7 +61,7 @@ void Nibbler::updateFunc()
 	// Only render if required to enforce frameRate
 	if (this->frameClock.getElapsedTime().asSeconds() >= this->perFrameSeconds)
 	{
-		this->renderer.render(this->window, *this->gameState);
+		this->renderer->render(this->window, *this->gameState);
 		this->frameClock.restart();
 	}
 }

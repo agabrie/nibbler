@@ -6,7 +6,7 @@
 
 #include <Engine.hpp>
 #include <EngineEvent.hpp>
-#include <Renderer.hpp>
+#include <IRenderer.hpp>
 #include <SFML/Graphics.hpp>
 #include <GameState.hpp>
 
@@ -22,7 +22,7 @@ class Nibbler : private AMainLoop
 private:
 	sf::RenderWindow window;
 	Engine engine;
-	Renderer renderer;
+	Renderer *renderer;
 	Input input;
 
 	GameState *gameState;

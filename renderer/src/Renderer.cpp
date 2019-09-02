@@ -1,8 +1,18 @@
-#include "../include/Renderer.hpp"
+#include "../include/IRenderer.hpp"
 
 #include <iostream>
 
-const float SCALE = 60;
+// const float SCALE = 60;
+
+Renderer::Renderer(int x, int y){
+	// this->window = window;
+	if(x > y)
+		this->scale = sf::VideoMode::getDesktopMode().width/(x+1);
+	else
+		this->scale = sf::VideoMode::getDesktopMode().height/(y+1);
+}
+Renderer::~Renderer(){
+}
 
 void Renderer::render(sf::RenderWindow &window, const GameState &state)
 {
@@ -16,12 +26,12 @@ void Renderer::render(sf::RenderWindow &window, const GameState &state)
 void Renderer::playerBody(sf::RenderWindow &window, const GameState &state,const PlayerBody &pb)
 {
 	// sf::CircleShape player(SCALE / 2);
-	sf::RectangleShape player(sf::Vector2f(SCALE,SCALE));
+	sf::RectangleShape player(sf::Vector2f(scale,scale));
 	// sf::CircleShape player(SCALE / 2);
 	sf::Vector2f playerPosition(pb.position());
 	playerPosition -= sf::Vector2f(0.5, 0.5);
 	// playerPosition.y *= -1;
-	playerPosition *= SCALE;
+	playerPosition *= scale;
 
 	player.setPosition(playerPosition);
 	// player.setFillColor(sf::Color(50, 250, 50));
@@ -39,11 +49,11 @@ void Renderer::player(sf::RenderWindow &window, const GameState &state)
 
 void Renderer::food(sf::RenderWindow &window, const GameState &state)
 {
-	sf::CircleShape food(SCALE / 2);
+	sf::CircleShape food(scale / 2);
 
 	sf::Vector2f foodPosition(state.food->position);
 	foodPosition -= sf::Vector2f(0.5, 0.5);
-	foodPosition *= SCALE;
+	foodPosition *= scale;
 
 	food.setPosition(foodPosition);
 // 	switch(e.type){
@@ -65,7 +75,7 @@ void Renderer::map(sf::RenderWindow &window, const GameState &state)
 	const Map &map = *state.map;
 	const sf::Vector2i &mapSize = map.size();
 	Tile tile;
-	sf::RectangleShape cell(sf::Vector2f(SCALE, SCALE));
+	sf::RectangleShape cell(sf::Vector2f(scale, scale));
 	// sf::CircleShape bomb(SCALE / 2);
 	cell.setFillColor(sf::Color(250));
 
@@ -77,7 +87,7 @@ void Renderer::map(sf::RenderWindow &window, const GameState &state)
 			tile = map.tileAt(cellPosition);
 			if (tile != Tile::Clear)
 			{
-				cellPosition *= static_cast<int>(SCALE);
+				cellPosition *= static_cast<int>(scale);
 				cell.setPosition(cellPosition.x, cellPosition.y);
 				switch (tile)
 				{

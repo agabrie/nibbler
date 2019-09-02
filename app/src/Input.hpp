@@ -17,6 +17,9 @@ private:
 	Key _down;
 	Key _left;
 	Key _right;
+	Key _lib1;
+	Key _lib2;
+	Key _lib3;
 
 public:
 	Input();
@@ -36,6 +39,7 @@ public:
 
 	Key getRight() const;
 	void setRight(Key key);
+	
 
 };
 

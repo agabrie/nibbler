@@ -13,7 +13,10 @@ enum EngineEvent
 	move_left,
 	stop_left,
 	debug_values,
-	debug_stop
+	debug_stop,
+	lib1,
+	lib2,
+	lib3
 };
 
 #endif
