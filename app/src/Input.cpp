@@ -6,6 +6,9 @@ Input::Input() : _up(Key::Up),
 				 _down(Key::Down),
 				 _left(Key::Left),
 				 _right(Key::Right)
+				//  _lib1(Key::lib1),
+				//  _lib2(Key::lib2),
+				//  _lib3(Key::lib3)
 {
 }
 
@@ -53,6 +56,16 @@ void Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &
 				break;
 			case sf::Keyboard::Right:
 				eEvent = EngineEvent::move_right;
+				break;
+			case sf::Keyboard::Numpad1:
+				eEvent = EngineEvent::lib1;
+				std::cout << "num 1 pressed\n";
+				break;
+			case sf::Keyboard::Numpad2:
+				eEvent = EngineEvent::lib2;
+				break;
+			case sf::Keyboard::Numpad3:
+				eEvent = EngineEvent::lib3;
 				break;
 			case sf::Keyboard::Space:
 				eEvent = EngineEvent::debug_values;
@@ -130,5 +143,35 @@ Key Input::getRight() const
 void Input::setRight(Key key)
 {
 	this->_right = key;
+}
+
+Key Input::getLib1() const
+{
+	return this->_lib1;
+}
+
+void Input::setLib1(Key key)
+{
+	this->_lib1 = key;
+}
+
+Key Input::getLib2() const
+{
+	return this->_lib2;
+}
+
+void Input::setLib2(Key key)
+{
+	this->_lib2 = key;
+}
+
+Key Input::getLib3() const
+{
+	return this->_lib3;
+}
+
+void Input::setLib3(Key key)
+{
+	this->_lib3 = key;
 }
 

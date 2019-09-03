@@ -17,25 +17,25 @@ class sCoordinates
         this->y = (float)y;
     }
     sCoordinates operator+(const sCoordinates &c){
-        sCoordinates *s;
+        sCoordinates *s = new sCoordinates(0, 0);
         s->x = this->x + c.x;
         s->y = this->y + c.y;
         return *s;
     }
     sCoordinates operator-(const sCoordinates &c){
-        sCoordinates *s;
+        sCoordinates *s = new sCoordinates(0, 0);
         s->x = this->x - c.x;
         s->y = this->y - c.y;
         return *s;
     }
     sCoordinates operator*(const sCoordinates &c){
-        sCoordinates *s;
+        sCoordinates *s = new sCoordinates(0, 0);
         s->x = this->x * c.x;
         s->y = this->y * c.y;
         return *s;
     }
     sCoordinates operator/(const sCoordinates &c){
-        sCoordinates *s;
+        sCoordinates *s = new sCoordinates(0, 0);
         s->x = this->x / c.x;
         s->y = this->y / c.y;
         return *s;

@@ -5,7 +5,7 @@
 Player::Player(int width,int height,int level){
     // if(level > 23)
         // level = 1;
-    this->level = level;
+    this->level = 1;
     PlayerBody *part = new PlayerBody(sf::Vector2f((width/2)+0.5,(height/2)+0.5));
     // PlayerBody *part = new PlayerBody(sCoordinates(1.5,2.5));
         this->body.push_back(part);
@@ -31,7 +31,7 @@ void Player::extend(){
     PlayerBody *newBody = new PlayerBody(newPosition);
     newBody->updateDirection(lastPart->direction);
     this->body.push_back(newBody);
-    if(this->level < 29)
+    if(this->level < 39)
         this->level++;
 }
 void Player::moveAll(Map &map){

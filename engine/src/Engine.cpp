@@ -10,7 +10,7 @@ static Direction last_dir = Direction::North;
 void Engine::update(double deltaTime, std::vector<EngineEvent> &actions, GameState gameState)
 {
 	this->update_time -= deltaTime;
-	int i = 0;
+	// int i = 0;
 	PlayerBody *first = gameState.player->body.front();
 			
 		Direction &direction = first->direction;

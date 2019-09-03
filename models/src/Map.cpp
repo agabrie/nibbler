@@ -8,7 +8,7 @@
 const sf::Vector2i DEFAULT_SIZE(21, 21);
 // const sCoordinates DEFAULT_SIZE(21, 21);
 
-const float DESTRUCTABLE_CHANCE = 0.1;
+// const float DESTRUCTABLE_CHANCE = 0.1;
 
 Map::Map(int width, int height)
 	: _size(sf::Vector2i(width,height)),

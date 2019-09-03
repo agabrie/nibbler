@@ -33,16 +33,16 @@ void PlayerBody::move(const Map &map)
 
 	switch(this->direction){
 		case Direction::North:
-			movement.y -= 1;
+			movement.y -= _playerSpeed;
 			break;
 		case Direction::South:
-			movement.y += 1;
+			movement.y +=_playerSpeed;
 			break;
 		case Direction::East:
-			movement.x += 1;
+			movement.x += _playerSpeed;
 			break;
 		case Direction::West:
-			movement.x -= 1;
+			movement.x -= _playerSpeed;
 			break;
 		default:break;
 

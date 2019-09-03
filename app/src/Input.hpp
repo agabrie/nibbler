@@ -40,6 +40,14 @@ public:
 	Key getRight() const;
 	void setRight(Key key);
 	
+	Key getLib1() const;
+	void setLib1(Key key);
+
+	Key getLib2() const;
+	void setLib2(Key key);
+
+	Key getLib3() const;
+	void setLib3(Key key);
 
 };
 

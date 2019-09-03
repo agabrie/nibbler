@@ -7,17 +7,18 @@
 
 #include <vector>
 
-class Renderer
+class IRenderer
 {
 public:
 	float scale;
 	// sf::RenderWindow &window;
-	Renderer(int x, int y);
-	~Renderer();
+	IRenderer();
+	IRenderer(int x, int y);
+	virtual ~IRenderer();
 	void render(sf::RenderWindow &window, const GameState &state);
 private:
 	virtual void player(sf::RenderWindow &window, const GameState &state);
-	virtual void playerBody(sf::RenderWindow &window, const GameState &state,const PlayerBody &pb);
+	virtual void playerBody(sf::RenderWindow &window,const PlayerBody &pb);
 	virtual void food(sf::RenderWindow &window, const GameState &state);
 	// void enemyList(sf::RenderWindow &window, const GameState &state);
 	virtual void map(sf::RenderWindow &window, const GameState &state);
