@@ -9,11 +9,11 @@
 
 class IRenderer
 {
+	// sf::RenderWindow &_window = NULL;
 public:
 	float scale;
-	// sf::RenderWindow &window;
 	IRenderer();
-	IRenderer(int x, int y);
+	IRenderer(/*sf::RenderWindow &window,*/int x, int y);
 	virtual ~IRenderer();
 	void render(sf::RenderWindow &window, const GameState &state);
 private:

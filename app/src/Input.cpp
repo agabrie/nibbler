@@ -59,9 +59,16 @@ void Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &
 				break;
 			case sf::Keyboard::Numpad1:
 				eEvent = EngineEvent::lib1;
-				std::cout << "num 1 pressed\n";
+				// std::cout << "num 1 pressed\n";
+				break;
+			case sf::Keyboard::F1:
+				eEvent = EngineEvent::lib1;
+				// std::cout << "num 1 pressed\n";
 				break;
 			case sf::Keyboard::Numpad2:
+				eEvent = EngineEvent::lib2;
+				break;
+			case sf::Keyboard::F2:
 				eEvent = EngineEvent::lib2;
 				break;
 			case sf::Keyboard::Numpad3:

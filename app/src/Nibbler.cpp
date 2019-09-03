@@ -6,6 +6,7 @@
 
 // const int MAP_WIDTH = 11;
 // const int MAP_HEIGHT = 11;
+ static const char *WINDOW_TITLE = "Nibbler";
 
 Nibbler::Nibbler(int width, int height,int level)
 	: window(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), WINDOW_TITLE),

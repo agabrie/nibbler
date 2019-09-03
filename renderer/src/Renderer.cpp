@@ -8,8 +8,10 @@
 IRenderer::IRenderer(){
 	this->scale = sf::VideoMode::getDesktopMode().height/(sf::VideoMode::getDesktopMode().bitsPerPixel+1);
 }
-IRenderer::IRenderer(int x, int y){
-	// this->window = window;
+IRenderer::IRenderer(/*sf::RenderWindow &window,*/int x, int y)
+// :_window(window)
+{
+	;
 	if(x > y)
 		this->scale = sf::VideoMode::getDesktopMode().width/(x+1);
 	else
@@ -30,7 +32,7 @@ void IRenderer::render(sf::RenderWindow &window, const GameState &state)
 void IRenderer::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
 {
 	// sf::CircleShape player(SCALE / 2);
-	sf::RectangleShape player(sf::Vector2f(scale-10,scale-10));
+	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	sf::Texture texture;
 	if (!texture.loadFromFile("../renderer/src/Body2.png")){}
 	// player.setOutlineThickness(5);
@@ -58,7 +60,7 @@ void IRenderer::player(sf::RenderWindow &window, const GameState &state)
 
 void IRenderer::food(sf::RenderWindow &window, const GameState &state)
 {
-	sf::CircleShape food((scale - 10)/ 2);
+	sf::CircleShape food((scale -( scale/10))/ 2);
 
 	sf::Vector2f foodPosition(state.food->position);
 	foodPosition -= sf::Vector2f(0.5, 0.5);
@@ -84,7 +86,7 @@ void IRenderer::map(sf::RenderWindow &window, const GameState &state)
 	const Map &map = *state.map;
 	const sf::Vector2i &mapSize = map.size();
 	Tile tile;
-	sf::RectangleShape cell(sf::Vector2f(scale-10, scale-10));
+	sf::RectangleShape cell(sf::Vector2f(scale-(scale/10), scale-(scale/10)));
 	// sf::CircleShape bomb(SCALE / 2);
 	// system("pwd");
 	sf::Texture texture;
@@ -104,7 +106,7 @@ void IRenderer::map(sf::RenderWindow &window, const GameState &state)
 			if (tile != Tile::Clear)
 			{
 				cellPosition *= static_cast<int>(scale);
-				cell.setPosition(cellPosition.x-0.5, cellPosition.y-0.5);
+				cell.setPosition((cellPosition.x-0.5)*1, (cellPosition.y-0.5)*1);
 				
 				// cell.setOutlineThickness(5);
 				// cell.setOutlineColor(sf::Color(0, 0, 0));

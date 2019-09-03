@@ -14,9 +14,9 @@
 #include <vector>
 #include <ctime>
 
-static const uint WINDOW_WIDTH = 21*60;
-static const uint WINDOW_HEIGHT = 21*60;
-static const char *WINDOW_TITLE = "Nibbler";
+// static const uint WINDOW_WIDTH = 21*60;
+// static const uint WINDOW_HEIGHT = 21*60;
+// static const char *WINDOW_TITLE = "Nibbler";
 
 class Nibbler : private AMainLoop
 {
