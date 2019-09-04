@@ -26,7 +26,22 @@ void Renderer3::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
 	// sf::CircleShape player(SCALE / 2);
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	sf::Texture texture;
-	if (!texture.loadFromFile("../renderer/src/Body2.png")){}
+	if (!texture.loadFromFile("../renderer/src/BodyDown.png")){}
+	// switch(pb.direction){
+	// 	case Direction::North:
+	// 		texture.loadFromFile("../renderer/src/BodyUp.png");
+	// 		break;
+	// 	case Direction::South:
+	// 		texture.loadFromFile("../renderer/src/BodyDown.png");
+	// 		break;
+	// 	case Direction::East:
+	// 		texture.loadFromFile("../renderer/src/BodyRight.png");
+	// 		break;
+	// 	case Direction::West:
+	// 		texture.loadFromFile("../renderer/src/BodyLeft.png");
+	// 		break;
+	// 	default:break;
+	// }
 	// player.setOutlineThickness(5);
 	// player.setOutlineColor(sf::Color(0, 0, 0));
 	// sf::CircleShape player(SCALE / 2);
@@ -38,8 +53,8 @@ void Renderer3::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
 	player.setPosition(playerPosition);
 	// player.setFillColor(sf::Color(50, 250, 50));
 			// player.setFillColor(sf::Color(50, 175, 255));
-		player.setTexture(&texture); // texture is a sf::Texture
-		player.setTextureRect(sf::IntRect(0, 0, 32, 32));
+	player.setTexture(&texture); // texture is a sf::Texture
+	player.setTextureRect(sf::IntRect(0, 0, 32, 32));
 	window.draw(player);
 }
 void Renderer3::renderHead(sf::RenderWindow &window,const PlayerBody &pb)
@@ -63,20 +78,24 @@ void Renderer3::renderHead(sf::RenderWindow &window,const PlayerBody &pb)
 	// 	default:break;
 	// }
 	player.setOrigin(scale/2,scale/2);
+	
 	// sf::
 	// sf::RectangleShape player(sf::Vector2f(scale,scale));
 	// sf::CircleShape player(SCALE / 2);
 	switch(pb.direction){
-		case Direction::South:
-			player.rotate(180.f);
-			break;
-		case Direction::East:
-			player.rotate(90.f);
-			break;
 		case Direction::North:
 			player.rotate(0.f);
 			break;
+		case Direction::East:
+			player.setOrigin((scale/2),(scale/2));
+			player.rotate(90.f);
+			break;
+		case Direction::South:
+			player.setOrigin((scale/2)-(scale/10),(scale/2)-(scale/10));
+			player.rotate(180.f);
+			break;
 		case Direction::West:
+			player.setOrigin((scale/2)-(scale/10),(scale/2));
 			player.rotate(270.f);
 			break;
 		default:break;
@@ -158,18 +177,7 @@ void Renderer3::map(sf::RenderWindow &window, const GameState &state)
 					cell.setTextureRect(sf::IntRect(0, 0, 32, 32));
 					window.draw(cell);
 					break;
-				// case Tile::Destructible:
-					// cell.setFillColor(sf::Color(50, 50, 150));
-					// window.draw(cell);
-					// break;
-				// case Tile::Bomb:
-					// bomb.setPosition(cellPosition.x, cellPosition.y);
-					// window.draw(bomb);
-					// break;
-				// case Tile::Flame:
-					// cell.setFillColor(sf::Color(255, 0, 0));
-					// window.draw(cell);
-					// break;
+
 				default:
 					break;
 				}
