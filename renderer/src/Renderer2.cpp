@@ -40,7 +40,39 @@ void Renderer2::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
 
 	window.draw(player);
 }
+void Renderer2::renderHead(sf::RenderWindow &window,const PlayerBody &pb)
+{
+	sf::CircleShape player(scale / 2,3);
+	player.setOrigin(scale/2,scale/2);
+	// sf::
+	// sf::RectangleShape player(sf::Vector2f(scale,scale));
+	// sf::CircleShape player(SCALE / 2);
+	switch(pb.direction){
+		case Direction::South:
+			player.rotate(180.f);
+			break;
+		case Direction::East:
+			player.rotate(90.f);
+			break;
+		case Direction::North:
+			player.rotate(0.f);
+			break;
+		case Direction::West:
+			player.rotate(270.f);
+			break;
+		default:break;
+	}
+	sf::Vector2f playerPosition(pb.position());
+	// playerPosition -= sf::Vector2f(0.5, 0.5);
+	// playerPosition.y *= -1;
+	playerPosition *= scale;
 
+	player.setPosition(playerPosition);
+	// player.setFillColor(sf::Color(50, 250, 50));
+			player.setFillColor(sf::Color(255, 255, 255));
+
+	window.draw(player);
+}
 // void Renderer2::player(sf::RenderWindow &window, const GameState &state)
 // {
 // 	for(auto &part: state.player->body){

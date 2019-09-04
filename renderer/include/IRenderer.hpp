@@ -17,6 +17,7 @@ public:
 	virtual ~IRenderer();
 	void render(sf::RenderWindow &window, const GameState &state);
 private:
+	virtual void renderHead(sf::RenderWindow &window,const PlayerBody &pb);
 	virtual void player(sf::RenderWindow &window, const GameState &state);
 	virtual void playerBody(sf::RenderWindow &window,const PlayerBody &pb);
 	virtual void food(sf::RenderWindow &window, const GameState &state);

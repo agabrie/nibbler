@@ -68,6 +68,10 @@ void Nibbler::updateFunc()
 			delete renderer;
 			renderer = new Renderer2(this->mapWidth, this->mapHeight);
 			break;
+		case EngineEvent::lib3:
+			delete renderer;
+			renderer = new Renderer3(this->mapWidth, this->mapHeight);
+			break;
 		default:
 			break;
 		}

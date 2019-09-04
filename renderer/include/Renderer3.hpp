@@ -1,5 +1,5 @@
-#ifndef _Renderer2_hpp_
-#define _Renderer2_hpp_
+#ifndef _Renderer3_hpp_
+#define _Renderer3_hpp_
 
 #include <GameState.hpp>
 
@@ -7,13 +7,14 @@
 #include "IRenderer.hpp"
 #include <vector>
 
-class Renderer2:public IRenderer
+class Renderer3:public IRenderer
 {
 public:
 	// float scale;
 	// sf::RenderWindow &window;
-	Renderer2(int x, int y);
-	~Renderer2();
+	~Renderer3();
+	Renderer3();
+	Renderer3(int x, int y);
 	// void render(sf::RenderWindow &window, const GameState &state);
 // private:
 // 	virtual void player(sf::RenderWindow &window, const GameState &state);
