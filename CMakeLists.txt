@@ -18,6 +18,9 @@ endif()
 include_directories(
     engine/include
     renderer/include
+    renderer/Renderer1/include
+    renderer/Renderer2/include
+    renderer/Renderer3/include
     models/include
     app/include
 )

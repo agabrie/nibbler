@@ -1,45 +1,42 @@
-#include "../include/IRenderer.hpp"
+#include "../include/Renderer1.hpp"
 
 #include <iostream>
+const std::string WINDOW_TITLE = "Nibbler 1";
 
-// const float SCALE = 60;
-// sf::Texture texture;
-// texture.loadFromFile("./block.png");
-IRenderer::IRenderer(){
+Renderer1::Renderer1(){
 	this->scale = sf::VideoMode::getDesktopMode().height/(sf::VideoMode::getDesktopMode().bitsPerPixel+1);
 }
-IRenderer::IRenderer(/*sf::RenderWindow &window,*/int x, int y)
-// :_window(window)
+Renderer1::Renderer1(int x, int y)
 {
-	;
+	_window.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height),  WINDOW_TITLE);
 	if(x > y)
 		this->scale = sf::VideoMode::getDesktopMode().width/(x+1);
 	else
 		this->scale = sf::VideoMode::getDesktopMode().height/(y+1);
 }
-IRenderer::~IRenderer(){
+Renderer1::~Renderer1(){
 }
 
-void IRenderer::render(sf::RenderWindow &window, const GameState &state)
+void Renderer1::render(const GameState &state)
 {
-	window.clear(sf::Color::Black);
-	map(window, state);
-	player(window, state);
-	food(window, state);
-	window.display();
+	_window.clear(sf::Color::Black);
+	map(state);
+	player(state);
+	food(state);
+	_window.display();
 }
-void IRenderer::player(sf::RenderWindow &window, const GameState &state)
+void Renderer1::player(const GameState &state)
 {
 	int i = 0;
 	for(auto &part: state.player->body){
 		i++;
 		if(i == 1)
-			renderHead(window, *part);
+			renderHead(*part);
 		else
-			playerBody(window,*part);
+			playerBody(*part);
 	}
 }
-void IRenderer::renderHead(sf::RenderWindow &window,const PlayerBody &pb)
+void Renderer1::renderHead(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	// sf::
@@ -55,14 +52,11 @@ void IRenderer::renderHead(sf::RenderWindow &window,const PlayerBody &pb)
 	// player.setFillColor(sf::Color(50, 250, 50));
 			player.setFillColor(sf::Color(255, 255, 255));
 
-	window.draw(player);
+	_window.draw(player);
 }
-void IRenderer::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
+void Renderer1::playerBody(const PlayerBody &pb)
 {
-	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));;
-	// sf::
-	// sf::RectangleShape player(sf::Vector2f(scale,scale));
-	// sf::CircleShape player(SCALE / 2);
+	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	player.setOutlineThickness(5);
 	player.setOutlineColor(sf::Color(0, 0, 0));
 	sf::Vector2f playerPosition(pb.position());
@@ -74,10 +68,10 @@ void IRenderer::playerBody(sf::RenderWindow &window,const PlayerBody &pb)
 	// player.setFillColor(sf::Color(50, 250, 50));
 			player.setFillColor(sf::Color(200, 200, 200));
 
-	window.draw(player);
+	_window.draw(player);
 }
 
-void IRenderer::food(sf::RenderWindow &window, const GameState &state)
+void Renderer1::food(const GameState &state)
 {
 	sf::CircleShape food((scale -( scale/10))/ 2);
 
@@ -97,10 +91,10 @@ void IRenderer::food(sf::RenderWindow &window, const GameState &state)
 // 			enemy.setFillColor(sf::Color(255, 255, 0));
 // 			break;
 // 	}
-	window.draw(food);
+	_window.draw(food);
 }
 
-void IRenderer::map(sf::RenderWindow &window, const GameState &state)
+void Renderer1::map(const GameState &state)
 {
 	const Map &map = *state.map;
 	const sf::Vector2i &mapSize = map.size();
@@ -135,7 +129,7 @@ void IRenderer::map(sf::RenderWindow &window, const GameState &state)
 					cell.setFillColor(sf::Color(50, 150, 20));
 					// cell.setTexture(&texture); // texture is a sf::Texture
 					// cell.setTextureRect(sf::IntRect(0, 0, 32, 32));
-					window.draw(cell);
+					_window.draw(cell);
 					break;
 				// case Tile::Destructible:
 					// cell.setFillColor(sf::Color(50, 50, 150));

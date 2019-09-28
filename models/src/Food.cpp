@@ -32,7 +32,7 @@ void Food::relocate(int width, int height){
     // std::cout<<"Random ints ("<<x<<", "<<y<<")\n";
     newLocation.x = x+1.5;
     newLocation.y = y+1.5;
-    std::cout<<"Location ("<<newLocation.x<<", "<<newLocation.y<<")\n";
+    // std::cout<<"Location ("<<newLocation.x<<", "<<newLocation.y<<")\n";
     this->position = newLocation;
 
 }
