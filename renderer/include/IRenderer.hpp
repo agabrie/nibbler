@@ -2,27 +2,25 @@
 #define _Renderer_hpp_
 
 #include <GameState.hpp>
-
 #include <SFML/Graphics.hpp>
-
 #include <vector>
+#include <iostream>
 
 class IRenderer
 {
-	// sf::RenderWindow &_window = NULL;
 public:
+	sf::RenderWindow *_window;
 	float scale;
-	IRenderer();
-	IRenderer(/*sf::RenderWindow &window,*/int x, int y);
-	virtual ~IRenderer();
-	void render(sf::RenderWindow &window, const GameState &state);
+	IRenderer(){}
+	IRenderer(int x, int y){if(x == y){;}return ;}
+	virtual ~IRenderer(){}
+	virtual void render(const GameState &state) = 0;
 private:
-	virtual void renderHead(sf::RenderWindow &window,const PlayerBody &pb);
-	virtual void player(sf::RenderWindow &window, const GameState &state);
-	virtual void playerBody(sf::RenderWindow &window,const PlayerBody &pb);
-	virtual void food(sf::RenderWindow &window, const GameState &state);
-	// void enemyList(sf::RenderWindow &window, const GameState &state);
-	virtual void map(sf::RenderWindow &window, const GameState &state);
+	virtual void renderHead(const PlayerBody &pb) = 0;
+	virtual void player(const GameState &state) = 0;
+	virtual void playerBody( const PlayerBody &pb) = 0;
+	virtual void food( const GameState &state) = 0;
+	virtual void map(const GameState &state) = 0;
 };
 
 #endif
