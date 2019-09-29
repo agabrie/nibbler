@@ -16,10 +16,13 @@ INCLUDES=	-I $(HEADER) -I $(MODELS) -I $(ENGINE)
 all: $(BINS)
 
 $(BINS): $(DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -shared -o $(addprefix $(DIR),$(BINS).so) $(addprefix src/,$@.cpp) $(LIB)
+	$(CC) $(CFLAGS) -fPIC -shared -o $(addprefix $(DIR),$(BINS).dylib) $(INCLUDES) $(addprefix src/,$@.cpp) $(LIB)
+	$(CC) $(CFLAGS) -fPIC -shared -o $(addprefix $(DIR),$(BINS).so) $(INCLUDES) $(addprefix src/,$@.cpp) $(LIB)
+
 $(DIR):
 	mkdir $(DIR)
 clean:
+	rm $(addprefix $(DIR),$(BINS).dylib)
 	rm $(addprefix $(DIR),$(BINS).so)
 
 re: clean all
