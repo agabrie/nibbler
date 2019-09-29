@@ -21,7 +21,7 @@ INCLUDES = $(addprefix -I, $(INCLUDE_DIR))
 LIBS		= 
 LIBLINK		= $(addprefix -l, $(LIBS))
 # LIBLINK = /renderer/Renderer1
-all:$(BINS) libre
+all:libre $(BINS)
 
 $(BINS):
 	# echo -L$(LIBLINK)

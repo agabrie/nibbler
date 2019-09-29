@@ -20,6 +20,7 @@ Renderer1::Renderer1(int x, int y)
 
 Renderer1::~Renderer1()
 {
+
 }
 
 void Renderer1::render(const GameState &state)
@@ -47,7 +48,8 @@ void Renderer1::renderHead(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
-	player.setOutlineThickness(5);
+	player.setOutlineThickness(scale/20);
+	// std::cout << "nana";
 	player.setOutlineColor(sf::Color(0, 0, 0));
 	player.setFillColor(sf::Color(255, 255, 255));
 	
@@ -63,7 +65,7 @@ void Renderer1::playerBody(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
-	player.setOutlineThickness(5);
+	player.setOutlineThickness(scale/20);
 	player.setOutlineColor(sf::Color(0, 0, 0));
 	player.setFillColor(sf::Color(200, 200, 200));
 	
@@ -105,7 +107,7 @@ void Renderer1::map(const GameState &state)
 				cellPosition *= static_cast<int>(scale);
 				cell.setPosition((cellPosition.x-0.5)*1, (cellPosition.y-0.5)*1);
 				
-				cell.setOutlineThickness(5);
+				cell.setOutlineThickness(scale/10);
 				cell.setOutlineColor(sf::Color(0, 0, 0));
 				switch (tile)
 				{
