@@ -24,5 +24,6 @@ int main(int argc, char *argv[])
 	else{
 		nibbler =new Nibbler(21,21);
 	}
+	std::cout << "Start Game\n";
 	nibbler->startGame();
 }

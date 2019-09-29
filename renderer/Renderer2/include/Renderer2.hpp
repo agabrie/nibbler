@@ -13,6 +13,7 @@ public:
 	Renderer2();
 	Renderer2(int x, int y);
 	~Renderer2();
+	
 	void render(const GameState &state);
 	void player(const GameState &state);
 	void playerBody(const PlayerBody &pb);
@@ -21,4 +22,7 @@ public:
 	void map(const GameState &state);
 };
 
+extern "C" IRenderer *rend(int x, int y){
+	return (new Renderer2(x,y));
+}
 #endif
