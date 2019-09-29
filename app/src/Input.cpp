@@ -30,7 +30,7 @@ Input::~Input() {}
 // Need to be modified later
 void Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &window)
 {
-	std::cout << "in keys\n";
+	// std::cout << "in keys\n";
 	sf::Event event;
 	EngineEvent eEvent = unknown;
 	// TODO: Break into functions

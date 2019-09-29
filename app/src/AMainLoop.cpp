@@ -8,7 +8,6 @@ void AMainLoop::start()
 	this->_running = true;
 	while (this->_running)
 	{
-		std::cout << "something to start\n";
 		this->updateFunc();
 	}
 }
