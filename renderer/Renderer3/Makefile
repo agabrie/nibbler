@@ -7,6 +7,7 @@ OBJ		=	$(SRC:.cpp=.o)
 LIB		=	-lsfml-graphics \
 			-lsfml-window \
 			-lsfml-system
+SFML = $(shell pkg-config --libs --cflags sfml-graphics sfml-system sfml-window)
 LIBLINK	=	-l$(LIB)
 MODELS	=	../../models/include/
 ENGINE	=	../../engine/include/
@@ -16,7 +17,7 @@ INCLUDES=	-I $(HEADER) -I $(MODELS) -I $(ENGINE)
 all: $(BINS)
 
 $(BINS): $(DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -shared -o $(addprefix $(DIR),$(BINS).so) $(addprefix src/,$@.cpp) $(LIB)
+	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) -fPIC -shared -o $(addprefix $(DIR),$(BINS).dylib) $(INCLUDES)$(addprefix src/,$@.cpp)
 $(DIR):
 	mkdir $(DIR)
 clean:

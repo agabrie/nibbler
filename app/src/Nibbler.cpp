@@ -7,14 +7,16 @@
 // const int MAP_WIDTH = 11;
 // const int MAP_HEIGHT = 11;
 //  static const char *WINDOW_TITLE = "Nibbler";
-
+const std::string LIB_EXT = ".so";
+const std::string LIB_DIR = "./RenderLib/";
 Nibbler::Nibbler(int width, int height,int level):
 renderTime(0),
 engineTime(0)
 {
 	mapHeight = height;
 	mapWidth = width;
-	loadLib("./RenderLib/Renderer1.so");
+	std::cout << "here!";
+	loadLib(LIB_DIR+"Renderer1"+LIB_EXT);
 	// this->renderer = (*this->dylib_init)(mapWidth,mapHeight);
 	gameState = (new GameState(width, height,level));
 	this->deltaClock.restart();
@@ -27,7 +29,8 @@ engineTime(0)
 {
 	mapHeight = height;
 	mapWidth = width;
-	loadLib("./RenderLib/Renderer1.so");
+	std::cout << "here!";
+	loadLib(LIB_DIR+"Renderer1"+LIB_EXT);
 	// this->renderer = (*this->dylib_init)(mapWidth,mapHeight);
 	gameState = (new GameState(width, height));
 	this->deltaClock.restart();
@@ -76,17 +79,17 @@ void Nibbler::updateFunc()
 		case EngineEvent::lib1:
 			// delete renderer;		
 			// renderer = new Renderer1(this->mapWidth, this->mapHeight);
-			loadLib("./RenderLib/Renderer1.so");
+			loadLib(LIB_DIR+"Renderer1"+LIB_EXT);
 			break;
 		case EngineEvent::lib2:
 			// delete renderer;
 			// renderer = new Renderer2(this->mapWidth, this->mapHeight);
-			loadLib("./RenderLib/Renderer2.so");
+			loadLib(LIB_DIR+"Renderer2"+LIB_EXT);
 			break;
 		case EngineEvent::lib3:
 			// delete renderer;
 			// renderer = new Renderer3(this->mapWidth, this->mapHeight);
-			loadLib("./RenderLib/Renderer3.so");
+			loadLib(LIB_DIR+"Renderer3"+LIB_EXT);
 			break;
 		default:
 			break;

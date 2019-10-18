@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra --std=c++17 -stdlib=libc++
 SRC =engine/src/*.cpp \
 	renderer/Renderer1/src/*.cpp\
 	models/src/*.cpp\
@@ -10,6 +10,7 @@ BINS=nibbler
 OBJ = $(SRC:.cpp=.o)
 LIB = -lsfml-graphics -lsfml-window -lsfml-system
 LIBLINK= -l$(LIB)
+SFML = $(shell pkg-config --libs --cflags sfml-graphics sfml-system sfml-window)
 INCLUDE_DIR	= engine/include\
 	renderer/include\
 	models/include\
@@ -25,7 +26,7 @@ all:$(BINS) libre
 
 $(BINS):
 	# echo -L$(LIBLINK)
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIB) $(SRC) $(LIBLINK) -o $(BINS) -ldl ./RenderLib/*.so
+	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) $(LIB) $(SRC) $(LIBLINK) -o $(BINS) -ldl ./RenderLib/Renderer1.dylib
 	# ar rc $(BINS) $(OBJ)
 	# ranlib $(BINS)
 	# rm $(OBJ)
