@@ -17,7 +17,7 @@ INCLUDES=	-I $(HEADER) -I $(MODELS) -I $(ENGINE)
 all: $(BINS)
 
 $(BINS): $(DIR)
-	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) -fPIC -shared -o $(addprefix $(DIR),$(BINS).dylib) $(INCLUDES)$(addprefix src/,$@.cpp)
+	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) -fPIC -shared -o $(addprefix $(DIR),$(BINS).dylib) 
 $(DIR):
 	mkdir $(DIR)
 clean:

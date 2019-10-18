@@ -7,7 +7,7 @@
 // const int MAP_WIDTH = 11;
 // const int MAP_HEIGHT = 11;
 //  static const char *WINDOW_TITLE = "Nibbler";
-const std::string LIB_EXT = ".so";
+const std::string LIB_EXT = ".dylib";
 const std::string LIB_DIR = "./RenderLib/";
 Nibbler::Nibbler(int width, int height,int level):
 renderTime(0),

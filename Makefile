@@ -26,7 +26,7 @@ all:$(BINS) libre
 
 $(BINS):
 	# echo -L$(LIBLINK)
-	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) $(LIB) $(SRC) $(LIBLINK) -o $(BINS) -ldl ./RenderLib/Renderer1.dylib
+	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) $(LIB) $(SRC) -o $(BINS) -ldl ./RenderLib/Renderer1.dylib
 	# ar rc $(BINS) $(OBJ)
 	# ranlib $(BINS)
 	# rm $(OBJ)
