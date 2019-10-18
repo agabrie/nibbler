@@ -1,5 +1,6 @@
 
 add_library(Renderer STATIC
-    src/Renderer.cpp
-    src/Renderer2.cpp
+    Renderer1/src/Renderer1.cpp
+    Renderer2/src/Renderer2.cpp
+    Renderer3/src/Renderer3.cpp
 )

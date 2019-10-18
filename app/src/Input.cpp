@@ -6,9 +6,6 @@ Input::Input() : _up(Key::Up),
 				 _down(Key::Down),
 				 _left(Key::Left),
 				 _right(Key::Right)
-				//  _lib1(Key::lib1),
-				//  _lib2(Key::lib2),
-				//  _lib3(Key::lib3)
 {
 }
 

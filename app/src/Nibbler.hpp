@@ -7,7 +7,9 @@
 #include <Engine.hpp>
 #include <EngineEvent.hpp>
 #include <IRenderer.hpp>
+#include <Renderer1.hpp>
 #include <Renderer2.hpp>
+#include <Renderer3.hpp>
 #include <SFML/Graphics.hpp>
 #include <GameState.hpp>
 
