@@ -47,7 +47,7 @@ void Renderer1::renderHead(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
-	player.setOutlineThickness(5);
+	player.setOutlineThickness(1);
 	player.setOutlineColor(sf::Color(0, 0, 0));
 	player.setFillColor(sf::Color(255, 255, 255));
 	
@@ -63,7 +63,7 @@ void Renderer1::playerBody(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
-	player.setOutlineThickness(5);
+	player.setOutlineThickness(1);
 	player.setOutlineColor(sf::Color(0, 0, 0));
 	player.setFillColor(sf::Color(200, 200, 200));
 	
@@ -105,7 +105,7 @@ void Renderer1::map(const GameState &state)
 				cellPosition *= static_cast<int>(scale);
 				cell.setPosition((cellPosition.x-0.5)*1, (cellPosition.y-0.5)*1);
 				
-				cell.setOutlineThickness(5);
+				cell.setOutlineThickness(1);
 				cell.setOutlineColor(sf::Color(0, 0, 0));
 				switch (tile)
 				{
