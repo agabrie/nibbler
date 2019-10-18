@@ -74,6 +74,9 @@ void Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &
 			case sf::Keyboard::Numpad3:
 				eEvent = EngineEvent::lib3;
 				break;
+			case sf::Keyboard::F3:
+				eEvent = EngineEvent::lib3;
+				break;
 			case sf::Keyboard::Space:
 				eEvent = EngineEvent::debug_values;
 			default:
