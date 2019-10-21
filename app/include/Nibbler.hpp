@@ -7,9 +7,9 @@
 #include <Engine.hpp>
 #include <EngineEvent.hpp>
 #include <IRenderer.hpp>
-#include <Renderer1.hpp>
-#include <Renderer2.hpp>
-#include <Renderer3.hpp>
+// #include <Renderer1.hpp>
+// #include <Renderer2.hpp>
+// #include <Renderer3.hpp>
 #include <SFML/Graphics.hpp>
 #include <GameState.hpp>
 
@@ -26,6 +26,7 @@ private:
 	sf::RenderWindow window;
 	Engine engine;
 	IRenderer *renderer;
+
 	Input input;
 
 	GameState *gameState;
@@ -37,8 +38,12 @@ private:
 	int mapWidth;
 	int mapHeight;
 	virtual void updateFunc();
+	// IRenderer (*rend)(void);
+	IRenderer* (*dylib_init)(int,int);
+	void *_libhandle;
 
 public:
+	void loadLib(std::string);
 	Nibbler(int width,int height);
 	Nibbler(int width,int height,int level);
 	~Nibbler();
