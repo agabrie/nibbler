@@ -67,6 +67,10 @@ void Nibbler::updateFunc()
 			delete renderer;
 			renderer = new Renderer3(this->mapWidth, this->mapHeight);
 			break;
+		case EngineEvent::quit:
+			std::cout<<"\nEnd Game\n";
+			exit(1);
+			break;
 		default:
 			break;
 		}
