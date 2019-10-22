@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			std::cout << "heree";
+			// std::cout << "heree";
 			throw IncorrectArgumentTypeException();
 		}
 	}
@@ -91,6 +91,6 @@ int main(int argc, char *argv[])
 	else{
 		throw IncorrectNumberArgumentsException();
 	}
-	std::cout << "Start Game\n";
+	// std::cout << "Start Game\n";
 	nibbler->startGame();
 }
