@@ -45,7 +45,7 @@ void Player::moveAll(Map &map){
 		    part->move(map);
         else{
             if(!i){
-                    std::cout<<"Game Over!\n\tHit a Body Part\n";
+                    std::cout<<"Game Over!\n\tHit a Body Part!\nGame Ended!";
                 exit(1);
             }
         }

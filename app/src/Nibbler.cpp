@@ -66,6 +66,9 @@ void Nibbler::updateFunc()
 		case EngineEvent::lib3:
 			delete renderer;
 			renderer = new Renderer3(this->mapWidth, this->mapHeight);
+		case EngineEvent::quit:
+			std::cout<<"\nGame Ended!\n";
+			exit(1);
 			break;
 		default:
 			break;
