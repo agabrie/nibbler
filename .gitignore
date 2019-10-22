@@ -1,4 +1,10 @@
 build/**
 **/.DS_Store
 .vscode/**
-renderer/Renderer1/Makefile
+RenderLib/Renderer1.so
+RenderLib/Renderer2.so
+RenderLib/Renderer3.so
+RenderLib/Renderer1.dylib
+RenderLib/Renderer2.dylib
+RenderLib/Renderer3.dylib
+nibbler
