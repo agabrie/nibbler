@@ -17,7 +17,7 @@ enum EngineEvent
 	lib1,
 	lib2,
 	lib3,
-	quit
+	quit,
 };
 
 #endif

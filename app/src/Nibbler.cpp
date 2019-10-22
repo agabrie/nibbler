@@ -91,7 +91,7 @@ void Nibbler::updateFunc()
 			loadLib(LIB_DIR+"Renderer3"+LIB_EXT);
 			break;
 		case EngineEvent::quit:
-			std::cout<<"\nEnd Game\n";
+			std::cout<<"\nGame Ended!\n";
 			exit(1);
 			break;
 		default:

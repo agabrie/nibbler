@@ -20,7 +20,7 @@ public:
 	Map *map;
 
 	GameState(int width, int height){
-		player = new Player(width, height,4);
+		player = new Player(width, height, 4);
 		food = new Food(sf::Vector2f(width, height));
 		map = new Map(width, height);
 	}

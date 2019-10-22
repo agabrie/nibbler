@@ -50,7 +50,7 @@ void PlayerBody::move(const Map &map)
 	if(map.tileAt(sf::Vector2i(checkPosition(this->position(),this->direction))) == Tile::Solid){
 	// if(map.tileAt(sCoordinates(checkPosition(this->position(),this->direction))) == Tile::Solid){
 
-		std::cout << "Game Over!\n\tHit A Wall\n";
+		std::cout << "Game Over!\n\tHit A Wall!\nGame Ended!";
 		exit(1);
 	}
 	else
