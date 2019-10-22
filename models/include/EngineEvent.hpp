@@ -16,8 +16,7 @@ enum EngineEvent
 	debug_stop,
 	lib1,
 	lib2,
-	lib3,
-	quit
+	lib3
 };
 
 #endif

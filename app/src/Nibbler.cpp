@@ -90,10 +90,6 @@ void Nibbler::updateFunc()
 			// renderer = new Renderer3(this->mapWidth, this->mapHeight);
 			loadLib(LIB_DIR+"Renderer3"+LIB_EXT);
 			break;
-		case EngineEvent::quit:
-			std::cout<<"\nEnd Game\n";
-			exit(1);
-			break;
 		default:
 			break;
 		}
