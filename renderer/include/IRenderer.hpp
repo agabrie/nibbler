@@ -4,12 +4,11 @@
 #include <GameState.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <iostream>
 
 class IRenderer
 {
 public:
-	sf::RenderWindow *_window;
+	sf::RenderWindow _window;
 	float scale;
 	IRenderer(){}
 	IRenderer(int x, int y){if(x == y){;}return ;}

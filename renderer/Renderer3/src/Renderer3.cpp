@@ -3,7 +3,7 @@
 #include <iostream>
 
 const std::string WINDOW_TITLE = "Nibbler 3";
-const std::string TEXTURE_PATH = "./RenderLib/textures/";
+const std::string TEXTURE_PATH = "../renderer/Renderer3/textures/";
 Renderer3::Renderer3()
 {
 	this->scale = sf::VideoMode::getDesktopMode().height/(sf::VideoMode::getDesktopMode().bitsPerPixel+1);
@@ -11,7 +11,7 @@ Renderer3::Renderer3()
 
 Renderer3::Renderer3(int x, int y)
 {
-	this->_window = new sf::RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height),  WINDOW_TITLE);	
+	_window.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height),  WINDOW_TITLE);
 	if(x > y)
 		this->scale = sf::VideoMode::getDesktopMode().width/(x+1);
 	else
@@ -23,11 +23,11 @@ Renderer3::~Renderer3(){
 
 void Renderer3::render(const GameState &state)
 {
-	_window->clear(sf::Color::Black);
+	_window.clear(sf::Color::Black);
 	map(state);
 	player(state);
 	food(state);
-	_window->display();
+	_window.display();
 }
 
 void Renderer3::player(const GameState &state)
@@ -47,7 +47,6 @@ void Renderer3::playerBody(const PlayerBody &pb)
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
 	sf::Texture texture;
-
 	if (!texture.loadFromFile(TEXTURE_PATH+"BodyDown.png")){}
 	sf::Vector2f playerPosition(pb.position());
 	player.setTexture(&texture); // texture is a sf::Texture
@@ -57,16 +56,14 @@ void Renderer3::playerBody(const PlayerBody &pb)
 	playerPosition *= scale;
 	player.setPosition(playerPosition);
 	
-	_window->draw(player);
+	_window.draw(player);
 }
-// #include <filesystem>
-// namespace fs = std::filesystem;
+
 void Renderer3::renderHead(const PlayerBody &pb)
 {
 	sf::RectangleShape player(sf::Vector2f(scale-(scale/10),scale-(scale/10)));
 	
 	sf::Texture texture;
-	// std::cout << "Current path is " << fs::current_path() << '\n';
 	texture.loadFromFile(TEXTURE_PATH+"headup.png");
 	player.setOrigin(scale/2,scale/2);
 	switch(pb.direction){
@@ -94,7 +91,7 @@ void Renderer3::renderHead(const PlayerBody &pb)
 	playerPosition *= scale;
 	player.setPosition(playerPosition);
 	
-	_window->draw(player);
+	_window.draw(player);
 }
 
 void Renderer3::food(const GameState &state)
@@ -107,7 +104,7 @@ void Renderer3::food(const GameState &state)
 
 	food.setPosition(foodPosition);
 	food.setFillColor(sf::Color(255, 102, 178));
-	_window->draw(food);
+	_window.draw(food);
 }
 
 void Renderer3::map(const GameState &state)
@@ -136,7 +133,7 @@ void Renderer3::map(const GameState &state)
 					case Tile::Solid:
 						cell.setTexture(&texture); // texture is a sf::Texture
 						cell.setTextureRect(sf::IntRect(0, 0, 32, 32));
-						_window->draw(cell);
+						_window.draw(cell);
 						break;
 					default:
 						break;

@@ -13,7 +13,6 @@ public:
 	Renderer3();
 	Renderer3(int x, int y);
 	~Renderer3();
-
 	void render(const GameState &state);
 	void player(const GameState &state);
 	void playerBody(const PlayerBody &pb);
@@ -22,7 +21,4 @@ public:
 	void map(const GameState &state);
 };
 
-extern "C" IRenderer *rend(int x, int y){
-	return (new Renderer3(x,y));
-}
 #endif

@@ -1,8 +1,8 @@
-#include <AMainLoop.hpp>
+#include "AMainLoop.hpp"
 
 #include <ctime>
 #include <cmath>
-#include <iostream>
+
 void AMainLoop::start()
 {
 	this->_running = true;

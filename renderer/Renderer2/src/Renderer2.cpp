@@ -11,24 +11,23 @@ Renderer2::Renderer2()
 
 Renderer2::Renderer2(int x, int y)
 {
-	this->_window = new sf::RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height),  WINDOW_TITLE);
+	_window.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height),  WINDOW_TITLE);
 	if(x > y)
 		this->scale = sf::VideoMode::getDesktopMode().width/(x+1);
 	else
 		this->scale = sf::VideoMode::getDesktopMode().height/(y+1);
 }
 
-Renderer2::~Renderer2()
-{
+Renderer2::~Renderer2(){
 }
 
 void Renderer2::render(const GameState &state)
 {
-	_window->clear(sf::Color::Black);
+	_window.clear(sf::Color::Black);
 	map(state);
 	player(state);
 	food(state);
-	_window->display();
+	_window.display();
 }
 
 void Renderer2::player(const GameState &state)
@@ -69,7 +68,7 @@ void Renderer2::renderHead(const PlayerBody &pb)
 	playerPosition *= scale;
 	player.setPosition(playerPosition);
 	
-	_window->draw(player);
+	_window.draw(player);
 }
 
 void Renderer2::playerBody(const PlayerBody &pb)
@@ -83,7 +82,7 @@ void Renderer2::playerBody(const PlayerBody &pb)
 	playerPosition *= scale;
 	player.setPosition(playerPosition);
 	
-	_window->draw(player);
+	_window.draw(player);
 }
 
 void Renderer2::food(const GameState &state)
@@ -97,7 +96,7 @@ void Renderer2::food(const GameState &state)
 	foodPosition *= scale;
 	food.setPosition(foodPosition);
 	
-	_window->draw(food);
+	_window.draw(food);
 }
 
 void Renderer2::map(const GameState &state)
@@ -122,7 +121,7 @@ void Renderer2::map(const GameState &state)
 				{
 				case Tile::Solid:
 					cell.setFillColor(sf::Color(50, 150, 20));
-					_window->draw(cell);
+					_window.draw(cell);
 					break;
 				default:
 					break;
