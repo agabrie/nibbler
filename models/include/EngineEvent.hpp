@@ -1,5 +1,5 @@
-#ifndef _EngineEvent_HPP_
-#define _EngineEvent_HPP_
+#ifndef ENGINEEVENT_HPP
+#define ENGINEEVENT_HPP
 
 enum EngineEvent
 {

@@ -1,5 +1,5 @@
-#include "../include/Map.hpp"
-#include "../include/Coordinates.hpp"
+#include "Map.hpp"
+#include "Coordinates.hpp"
 
 #include <cstdlib>
 #include <ctime>

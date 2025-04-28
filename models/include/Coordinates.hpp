@@ -1,5 +1,5 @@
-#ifndef _Coordinates_hpp_
-# define _Coordinates_hpp_
+#ifndef COORDINATES_HPP
+# define COORDINATES_HPP
 class sCoordinates
 {
     public:

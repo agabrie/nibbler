@@ -1,44 +1,65 @@
-CC=clang++
-CFLAGS= -Wall -Werror -Wextra --std=c++17 -stdlib=libc++
-SRC =engine/src/*.cpp \
-	renderer/Renderer1/src/*.cpp\
-	models/src/*.cpp\
-	app/src/*.cpp
-	# renderer/Renderer2/src/*.cpp\
-	renderer/Renderer3/src/*.cpp
-BINS=nibbler
-OBJ = $(SRC:.cpp=.o)
-LIB = -lsfml-graphics -lsfml-window -lsfml-system
-LIBLINK= -l$(LIB)
+COMPILE=clang++
+COMPILER_FLAGS= -Wall -Werror -Wextra --std=c++17 -stdlib=libc++
+BUILD_DIRECTORY=build
+SOURCE_FILES= $(ENGINE) \
+	$(RENDERERS)\
+	$(MODELS)\
+	$(APP)
+ENGINE := $(shell find engine/src -name "*.cpp")
+MODELS := $(shell find models/src -name "*.cpp")
+RENDERERS := $(shell find renderer/Renderer1 -name "*.cpp")
+APP := $(shell find app -name "*.cpp")
+
+BINARY=nibbler
+OBJECTS := $(addprefix $(BUILD_DIRECTORY)/,$(SOURCE_FILES:%.cpp=%.o))
+# LIBRARY = -lsfml-graphics -lsfml-window -lsfml-system
+LIBRARY_LINK= -l$(LIBRARY)
 SFML = $(shell pkg-config --libs --cflags sfml-graphics sfml-system sfml-window)
-INCLUDE_DIR	= engine/include\
+HEADERS	= engine/include\
 	renderer/include\
 	models/include\
 	app/include
+$(BUILD_DIRECTORY)/%.o: %.cpp 
+	@echo "building files..."
+	
+	$(COMPILE) $(COMPILER_FLAGS) -I$(subst src,include,$($<:.cpp=.hpp)) -c $< -o $(basename $<).o
+	mv *.o $(BUILD_DIRECTORY)
+$(INCLUDE)
 # DYLIBS = -l renderer/Renderer1/rend1.dylib\
 	# -l renderer/Renderer2/\
 	# -l renderer/Renderer3/
-INCLUDES = $(addprefix -I, $(INCLUDE_DIR))
-LIBS		= 
-LIBLINK		= $(addprefix -l, $(LIBS))
+INCLUDE_HEADERS = $(addprefix -I, $(HEADERS))
+LIBRARIES		= 
+LIBRARY_LINK		= $(addprefix -l, $(LIBRARIES))
 # LIBLINK = /renderer/Renderer1
-all:$(BINS) libre
+all:$(BINARY) library_rebuild
 
-$(BINS):
-	# echo -L$(LIBLINK)
-	$(CC) $(SFML) $(CFLAGS) $(INCLUDES) $(LIB) $(SRC) -o $(BINS) -ldl ./RenderLib/Renderer1.dylib
-	# ar rc $(BINS) $(OBJ)
-	# ranlib $(BINS)
-	# rm $(OBJ)
+$(BINARY): $(SOURCE_FILES) $(HEADERS) $(OBJECTS)
+	echo -L$(LIBRARY_LINK)
+	$(COMPILE) $(SFML) $(COMPILER_FLAGS) $(INCLUDE_HEADERS) $(SOURCE_FILES) -o $(BINARY) -ldl ./RenderLib/Renderer1.dylib
+	# ar rc $(OBJECTS)
+	# ranlib $(BINARY)
+	# rm $(OBJECTS)
 
-libre:
+library_rebuild:
 	make -C ./renderer/Renderer1
 	make -C ./renderer/Renderer2
 	make -C ./renderer/Renderer3
 	
 clean:
-	rm $(BINS)
-	echo $(OBJ)
-	# rm $(OBJ)
+	@echo "####### removing binary $(BINARY) ######"
+	rm -f $(BINARY)
+	@echo "############### Removing Objects ###############"
+	@echo "\t$(OBJECTS:=\n\t)"
+	@echo "################################################"
+	rm -f $(OBJECTS)
 
-re: clean all
+rebuild: clean all
+
+display_files: $(SOURCE_FILES) $(OBJECTS)
+	@echo "#################### Files ####################"
+	@echo "\t$(SOURCE_FILES:=\n\t)"
+	@echo "###############################################"
+	@echo "################### OBJECTS ###################"
+	@echo "\t$(OBJECTS:=\n\t)"
+	@echo "###############################################"

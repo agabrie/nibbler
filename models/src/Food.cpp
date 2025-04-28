@@ -1,4 +1,4 @@
-#include "../include/Food.hpp"
+#include "Food.hpp"
 #include <iostream>
 const sf::Vector2f DEFAULT_SPAWN(11.5,11.5);
 // const sCoordinates DEFAULT_SPAWN(11.5,11.5);

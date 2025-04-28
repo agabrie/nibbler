@@ -1,5 +1,5 @@
-#ifndef _FOOD_HPP_
-#define _FOOD_HPP_
+#ifndef FOOD_HPP
+#define FOOD_HPP
 #include <SFML/System.hpp>
 #include "Map.hpp"
 #include "Coordinates.hpp"

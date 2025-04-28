@@ -1,5 +1,5 @@
-#ifndef _PLAYERBODY_HPP_
-#define _PLAYERBODY_HPP_
+#ifndef PLAYERBODY_HPP
+#define PLAYERBODY_HPP
 #include <list>
 #include "PlayerBody.hpp"
 class Player{

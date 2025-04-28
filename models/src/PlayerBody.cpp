@@ -1,5 +1,5 @@
-#include "../include/PlayerBody.hpp"
-#include "../include/Coordinates.hpp"
+#include "PlayerBody.hpp"
+#include "Coordinates.hpp"
 
 #include <iostream>
 #include <cmath>

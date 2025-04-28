@@ -1,5 +1,6 @@
-#include "../include/Player.hpp"
-#include "../include/Coordinates.hpp"
+#include "Player.hpp"
+#include "PlayerBody.hpp"
+#include "Coordinates.hpp"
 
 #include <iostream>
 Player::Player(int width,int height,int level){

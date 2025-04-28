@@ -1,5 +1,5 @@
-#ifndef _PlayerBody_hpp_
-#define _PlayerBody_hpp_
+#ifndef PLAYERBODY_HPP
+#define PLAYERBODY_HPP
 
 #include "Map.hpp"
 

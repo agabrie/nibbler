@@ -1,10 +1,7 @@
-#ifndef _ENGINE_HPP
-#define _ENGINE_HPP
+#ifndef ENGINE_HPP
+#define ENGINE_HPP
 
-#include "./EngineEvent.hpp"
-
-#include "../../models/include/GameState.hpp"
-
+#include "GameState.hpp"
 #include <vector>
 
 class Engine
